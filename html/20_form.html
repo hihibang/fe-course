@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+<body>
+    <h1>회원가입 폼</h1>
+
+    <a href="#field2">기타항목</a>
+    <form action="#" method="GET"><!-- GET ?/ POST-->
+        <!-- GET
+            url를 통해서 데이터를 서버에 전송하는 방식 url?data 의 구조(쿼리 스트링)
+            네트웍 패킷의 헤더에 함께 전송
+
+            POST
+            서버에 데이터 전송 시 네트윅 패킷의 바디에 함께 전송-->
+        <fieldset>
+            <legend>개인 정보 입력</legend>
+        <ul>
+            <li>
+                <label for="name">이름</label>
+                <input type="text" name="name">
+            </li>
+            <li>
+                <label for="ID">아이디</label>
+                <input type="text" name="id">
+            </li>
+            <li>
+                <label for="password">비밀번호</label>
+                <input type="password" name="password">
+            </li>
+            <fieldset>
+                <legend>주소 선택 태그</legend>
+            <li>
+                <label for="adress1">주소1</label>
+                <input type="text" name="adress1">
+            </li>
+            <li>
+                <label for="adress2">주소2</label>
+                <input type="radio" name="adress2" value="seoul"><span>서울시</span>
+                <input type="radio" name="adress2" value="gyeonggi"><span>경기도</span>
+                <input type="radio" name="adress2" value="busan"><span>부산시</span>
+                <!-- 선택지 중 하나를 고르게 하려면 name="" 이름이 같아야 함 -->
+            </li>
+            <li>
+                <label for="adress3">주소3</label>
+                <input type="checkbox" name="adress3" value="seoul"><span>서울시</span>
+                <input type="checkbox" name="adress3" value="gyeonggi"><span>경기도</span>
+                <input type="checkbox" name="adress3" value="busan"><span>부산시</span>
+            </li>
+            <li>
+                <label for="adress4">주소4</label>
+                <select name="adress4">
+                    <option value="select">주소를 선택하세요</option>
+                    <option value="seoul">서울시</option>
+                    <option value="gyeonggi">경기도</option>
+                    <option value="busan">부산시</option>
+                </select>
+            </li>
+            </fieldset>
+            <li>
+                <label for="birthday">생년월일</label>
+                <input type="date" name="birthday">
+            </li>
+            <li>
+                <label for="photo">프로필 사진 업로드</label>
+                <input type="file" name="photo">
+            </li>
+            <li>
+                <label for="intro">자기소개</label>
+                <textarea name="intro" cols="50" rows="10"
+                 placeholder="100자 이내로 작성해주세요."></textarea>
+            </li>
+            <li>
+                <button>전송(이벤트 있음)</button><!-- type defalut: submit 무조건 action의 위치로 감-->
+                <button type="button">전송(모양만 있음)</button>
+                <button type="reset">다시쓰기</button>
+            </li>
+        </ul>
+        </fieldset>
+        <fieldset id="field2">
+            <legend>기타 항목</legend>
+        </fieldset>
+    </form>
+</body>
+</html>

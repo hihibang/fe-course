@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallary</title>
+    <style>
+        ul {
+            /* property: value; */
+            /* background-color: aqua; */
+            list-style-type: none; /* li에 있는 . 사라짐 */
+            display: flex; /* Block > Inline */
+            gap: 10px; /* 이미지와 이미지 사이 간격 */
+        }
+        img {
+            width: 200px;
+        }
+        div {
+            text-align: center; /* 가운데 정렬 */
+            padding: 5px; /* 글자 상하좌우 공백 */
+            padding-bottom: 10px; /* 글자 아래 공백 */ 
+        }
+        figcaption {
+            text-align: center;
+        }
+        section {
+            display: flex;
+            gap: 10px;
+        }
+        li, article, figure, figcaption {
+            border: 1px solid lightgray;
+        }
+    </style>
+</head>
+<body>
+    <h1>Image Gallary: List</h1>
+    <ul>
+        <li>
+            <img src="https://www.w3schools.com/css/img_5terre.jpg" alt="">
+            <div>Cinque Terre</div>
+        </li>
+        <li>
+            <img src="https://www.w3schools.com/css/img_forest.jpg" alt="">
+            <div>Green Forest</div>
+        </li>
+        <li>
+            <img src="https://www.w3schools.com/css/img_lights.jpg" alt="">
+            <div>Northern Lights</div>
+        </li>
+        <li>
+            <img src="https://www.w3schools.com/css/img_mountains.jpg" alt="">
+            <div>Mountains</div>
+        </li>
+    </ul>
+
+    <h1>Image Gallary: sementic</h1>
+    <section>
+        <article>
+            <figure>
+                <img src="https://www.w3schools.com/css/img_5terre.jpg" alt="">
+                <figcaption>
+                    <P>Cinque Terre</P>
+                </figcaption>
+            </figure>
+        </article>
+        <article>
+            <figure>
+                <img src="https://www.w3schools.com/css/img_5terre.jpg" alt="">
+                <figcaption>
+                    <P>Cinque Terre</P>
+                </figcaption>
+            </figure>
+        </article>
+    </section> <!-- Ul의 sementic tag version-->
+
+</body>
+</html>
