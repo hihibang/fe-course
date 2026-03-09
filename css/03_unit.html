@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS-unit</title>
+    <meta name="description" content="CSS-unit">
+    <style>
+        h1{
+            /* width: 50%; 글자가 아니라 현재 보여지는 기준에서 얼마나 크기를 차지하는지. */
+            background-color: blueviolet;
+            width: 1000px; /* 절대적인 크기 지정 */
+            /* 크기 지정이 유동적: 퍼센트/ 크기 지정 고정: 픽셀 */
+            /* 큰 레이아웃: 퍼센트/ 고정된 레이아웃: 픽셀 */
+        }
+        #pixel {
+            width: 500px;
+            background-color: yellow;
+        }
+        #percent {
+            width: 500px;
+            background-color: tomato;
+        }
+        #pixel-h5 {
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+<body>
+    <h1>CSS-unit</h1>
+    <h2 id="pixel">Pixel</h2>
+    <div>
+        <h5 id="pixel-h5">CSS-Pixel</h5>
+        <p id="pixel">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt quam ducimus nulla fugiat ea sit fugit, esse dignissimos cumque, possimus illum repellat eum exercitationem, maxime quibusdam ad magni neque odit.</p>
+    </div>
+    <h2 id="percent">Percent(%)</h2>
+    <div>
+        <h5>CSS-percent</h5>
+        <p id="percent">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Minima voluptatibus necessitatibus magnam deleniti. Nihil qui aperiam minima ipsum deleniti ratione eveniet fuga, alias molestiae, dolorum, perferendis nisi provident corrupti nulla?</p>
+    </div>
+</body>
+</html>

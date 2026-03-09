@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습_회원가입폼.</title>
+</head>
+<body>
+    <header>
+        <h1>회원가입</h1>
+    </header>
+
+    <main>
+    <form action="#" method="get">
+    <fieldset>
+        <legend>필수항목</legend>
+
+        <div>
+            <label for="id">아이디</label>
+            <input type="text" name="id">
+        </div>
+        <div>
+            <label for="password">비밀번호</label>
+            <input type="password" name="password">
+        </div>
+        <div>
+            <label for="email">이메일</label>
+            <input type="email" name="email" placeholder="example@email.com">
+        </div>
+        <div>
+            <label for="name">성명</label>
+            <input type="text" name="name" placeholder="홍길동">
+        </div>
+        <div>
+            <label for="age">나이</label>
+            <input type="number" name="age">
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend>당신에 대해서 알고 싶어요!</legend>
+        
+        <div>
+            <label for="hobby">취미를 선택해 주세요.</label>
+            <input type="radio" name="hobby" value="게임하기"><span>게임하기</span> <!-- value 값 주는거 잊지 말기! -->
+            <input type="radio" name="hobby" value="음악듣기"><span>음악듣기</span>
+            <input type="radio" name="hobby" value="아이스음료 마시기"><span>아이스음료 마시기</span>
+        </div>
+        <div>
+            <label for="drink">좋아하는 음료를 선택해 주세요. (중복선택가능)</label>
+            <input type="checkbox" name="drink" value="쉐이크 종류 음료"><span>쉐이크 종류 음료</span>
+            <input type="checkbox" name="drink" value="티 종류 음료"><span>티 종류 음료</span>
+            <input type="checkbox" name="drink" value="커피 종류 음료"><span>커피 종류 음료</span>
+        </div>
+        <div>
+            <label for="date">동아리 참석 가능 날짜 :</label>
+            <input type="date" name="date">
+        </div>
+        <div>
+            <label for="select">얼.죽.아에서 참여하고 싶은 모임은?</label>
+            <select>
+                <option value="select">--선택해주세요--</option>
+                <option value="shake">게임 모임</option>
+                <option value="tea">음악감상 모임</option>
+                <option value="coffee">러닝 모임</option>
+            </select>
+        </div>
+        <div>
+            <label for="portfolio">포트폴리오 제출하기</label>
+            <button type="button">포트폴리오 업로드</button>
+            <input type="file" name="portfolio">
+        </div> 
+        <div>
+            <label for="talk">마지막으로 하고 싶은 말은?</label><br>
+            <textarea name="talk"></textarea>
+        </div>
+    </fieldset>
+    <fieldset>
+        <div>
+            <button type="reset">다시하기</button>
+            <button type="submit">제출하기</button>
+        </div>
+    </fieldset>
+    </form>
+    </main>
+    <footer></footer>
+</body>
+</html>
