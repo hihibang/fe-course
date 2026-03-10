@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Align</title>
+    <meta name="description" content="Text Align">
+    <style>
+        p {background-color: aquamarine;}
+        span {background-color: yellow;} /* 여유공간이 없는 Inline이기 때문에 정렬이 불가능하다. */
+        div {border: 1px solid palevioletred;}
+        /* Block Level*/
+        .b-left {text-align: left; /* 텍스트 정렬 */
+                 letter-spacing: 50px; /* 텍스트 간격 */
+                 line-height: 50px; /* 라인 높이 */
+                 text-indent: -50px; /* 텍스트 공백 */
+                 /* margin-left: 50px; 여백 */
+        }
+        .b-right {text-align: right;}
+        .b-center {text-align: center;}
+        /* Inline Level*/
+        .i-left {
+            border: 1px blue solid; /* 테두리가 안쪽이 아니라 바깥쪽에 생김*/
+            text-align: left; 
+            letter-spacing: 50px; /* 글자의 간격 및 높이는 Inline도 가능, 이미지 한장당 글자 한자 취급*/
+            line-height: 50px;
+            text-indent: 50px; /* Inline Level에서는 적용 안댐 */
+        } 
+        .i-right {text-align: right;}
+        .i-center {text-align: center;}
+        .d1 {text-align: left;}
+        .d2 {text-align: right;}
+        .d3 {text-align: center;}
+        /* Inline-Block Level */
+        img {
+            width: 100px;
+            height: 150px;
+        }
+        .img-block { /* .class */
+            text-align: center;
+            word-spacing: 50px; /* 글자의 간격 및 높이는 이미지도 가능, 이미지 한장당 글자 한자 취급*/
+        }
+        .b-justify {
+            width: 300px;
+            background-color: yellowgreen;
+            text-align: justify; /* 양쪽 정렬 */
+            text-transform: uppercase; /* 대문자로. 소문자 lowercase */
+        }
+    </style>
+</head>
+<body>
+    <h1>Text Align</h1>
+    <p class="b-left">Text Align ::left</p>
+    <p class="b-right">Text Align ::right</p>
+    <p class="b-center">Text Align ::center</p>
+    <p class="b-justify">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero, nulla soluta, fugit obcaecati hic animi debitis nostrum omnis mollitia dolores voluptatum sed a porro natus. Adipisci a unde quibusdam reiciendis?</p>
+
+    <h3>Inline Level</h3>
+    <div class="d1">
+        <span class="i-left">Text Align ::left</span>
+        <button>Click</button>
+        <a href="#">네이버</a>
+    </div>
+    <div class="d2"><span class="i-right">Text Align ::right</span></div>
+    <div class="d3"><span class="i-center">Text Align ::center</span></div>
+    
+    <hr>
+    <span class="i-left">Text Align ::left</span>
+    <span class="i-right">Text Align ::right</span>
+    <span class="i-center">Text Align ::center</span>
+
+    <h3>Inline-Block Level</h3>
+    <div class="img-block">
+        <img src="../images/image.jpeg" alt="hand">
+        <img src="../images/image.jpeg" alt="hand">
+        <img src="../images/image.jpeg" alt="hand">
+        <img src="../images/image.jpeg" alt="hand">
+        <img src="../images/image.jpeg" alt="hand">
+    </div>
+</body>
+</html>

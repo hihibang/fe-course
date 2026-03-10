@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DESC-Selecter</DESC-selecter></title>
+    <meta name="description" content="DESC-Selecter">
+
+    <style>
+        /*
+            descendent selecter: 조상[spce]자손 선택자
+            child selecter: 부모[>]자식: 바로 밑에 있는 자식들
+            밀접한 sibilings slecter: 기준태그[+]형제태그
+            모든 sibilings slecter: 기준태그[~]형제태그
+        */
+
+
+        h1 {
+            color: blue;
+            background-color: aquamarine;
+        }
+        body li ul {
+            background-color: yellow;
+        }
+        li#main-menu a { /* tag#id > tag에 id를 가진 친구를 찾음 */
+            color: tomato;
+        }
+        ul#sub-menu a {
+            color: green;
+        }
+        #sub-menu > li {
+            background-color: coral;
+        }
+
+        #sub-menu li a {
+            text-decoration: none;
+        }
+
+        li#main-menu + li {
+            background-color: tomato;
+        }
+        li#main-menu + li > a {
+            color: yellow;
+            text-decoration: none;
+        }
+        h2+p { /* 바로 밑에 있는 태그 */ 
+            background-color: silver;
+        }
+        h2 ~ p { /* 밑에 있는 태그들 */
+            background-color: blue;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>DESC-Selecter</h1>
+    <nav>
+        <ul>
+            <li id="main-menu">
+                <a href="#">menu1</a>
+                <ul id="sub-menu">
+                    <li><a href="#">sub-menu</a></li>
+                    <li><a href="#">sub-menu</a></li>
+                </ul>
+            </li>
+            <li><a href="#">menu3</a></li>
+            <li><a href="#">menu3</a></li>
+        </ul>
+    </nav>
+
+    <h2>Sibilings Selecter</h2>
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore officia adipisci modi culpa maiores nihil reprehenderit, illo numquam vel, eum ea repudiandae iste pariatur quaerat perferendis obcaecati sint! Quo, vero.</p>
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore officia adipisci modi culpa maiores nihil reprehenderit, illo numquam vel, eum ea repudiandae iste pariatur quaerat perferendis obcaecati sint! Quo, vero.</p>
+    <p>Lorem sipsum dolor sit, amet consectetur adipisicing elit. Tempore officia adipisci modi culpa maiores nihil reprehenderit, illo numquam vel, eum ea repudiandae iste pariatur quaerat perferendis obcaecati sint! Quo, vero.</p>
+</body>
+</html>

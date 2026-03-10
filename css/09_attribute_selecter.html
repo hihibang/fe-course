@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attribute Selecter</title>
+    <meta name="description" content="Attribute Selecter">
+    <style>
+        /* 
+        tag[속성: 값] {스타일}
+        */
+        a[href="http://www.naver.com"] {
+            color: tomato;
+        }
+        a[target="_self"] {
+            color: green;
+        }
+        /* a[href="http://www.naver.com"], a[href="http://www.goolge.com"] {
+            background-color: darkslateblue;
+        }
+        a[target="_blank"] {color: aliceblue;} */
+
+        /* "test"로 시작하는 모든 class 속성을 대상으로 함 */
+        a[class^="test"] {background-color: tomato;}
+        a[href="#"] {color: red; text-decoration: none;}
+
+    </style>
+</head>
+<body>
+    <h1>Attribute Selecter</h1>
+    <a href="#" class="test_1">테스트1</a>
+    <a href="http://www.naver.com" target="_blank">네이버</a> <!--target 다른 페이지-->
+    <a href="http://www.goolge.com" target="_self">구글</a> <!--target 본 페이지-->
+    <a href="http://www.daum.net" target="_blank">다음</a>
+    <a href="#" class="test_2">테스트2</a>
+</body>
+</html>

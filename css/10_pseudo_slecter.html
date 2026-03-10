@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Psudo Selecter</title>
+    <meta name="description" content="Psudo Selecter">
+    <style>
+        /* h1 태그 앞에 content에 해당하는 내용을 추가하고 글자색을 초록색으로 정의. */
+        h1::before {
+            content:  "h1태그 앞에 추가되는 내용";
+            color: green;
+        }
+        /* h1 태그 뒤에 content에 해당하는 내용을 추가하고 글자색을 초록색으로 정의. */
+        h1::after {
+            content:  "h1태그 뒤에 추가되는 내용";
+            color: blue;
+        }
+        a:hover { /* 마우스를 올렸을 때*/
+            text-decoration: none;
+        }
+        a.naver:hover {
+            color: red;}
+        a.google:hover {
+            color: mintcream;}
+        a.daum:hover {
+            color: green;}
+        
+        a.naver:active {color: green;} /* 마우스로 클릭했을 때*/
+        a.naver:visited {color: gray;} /* 마우스로 눌러 방문했을 때. */
+
+        input:focus { /* 커서가 올라갔을 때 */
+            background-color: bisque;
+            border: 1px solid indigo;
+            border-radius: 4px;
+        }
+
+        /* 수열 */
+        ul.menu li:nth-child(2),
+        ul.menu li:last-child {
+            background-color: tomato;
+        }
+        ul.menu li:nth-child(4) a {
+            color: yellow;
+        }
+
+        div p:nth-child(4) {
+            background-color: aquamarine;
+        }
+        div p:nth-child(2n) { /* 짝수: 2n even */
+            color: red;
+        }
+        div p:nth-child(odd) { /* 홀수: 2n+1 odd */
+            color: blue;
+        }
+
+        table tr:nth-child(odd) {
+            background-color: silver;
+        }
+        table tr:first-child {
+            background-color: purple;
+        }
+
+        input:checked + span{
+            background-color: gray;
+        }
+        input:disabled {
+            background-color: antiquewhite;
+        }
+
+        /* :not(선택자) 부정 선택자 */
+        div *:not(p:nth-child(3)) {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>psudo Selecter</h1>
+    <p>
+        <a href="http://www.naver.com" class="naver">Naver</a>
+        <a href="http://www.Google.com" class="google">Google</a>
+        <a href="http://www.daum.net" class="daum">Daum</a>
+    </p>
+    <form action="#">
+        <ul>
+            <li>
+                <label for="name">이름</label>
+                <input type="text" name="name" id="name" disabled>
+            </li>
+            <li>
+                <label for="email">주소</label>
+                <input type="email" name="email" id="email">
+            </li>
+            <li>
+                <label for="hobby">취미를 선택해주세요</label>
+                <input type="checkbox" name="hobby" value="game" checked><span>게임</span> <!-- ckecked: 기본적으로 선택-->
+                <input type="checkbox" name="hobby" value="book"><span>책</span>
+            </li>
+            <li>
+                <label for="menu">메뉴를 선택해주세요</label>
+                <input type="radio" name="menu" value="pasta"><span>파스타</span>
+                <input type="radio" name="menu" value="ramen" checked><span>라면</span>
+            </li>
+            <li>
+                <button disabled>전송하기</button>
+            </li>
+        </ul>
+    </form>
+    <hr>
+    <h1>Pseudo Selecter - 수열</h1>
+    <ul class="menu">
+        <li><a href="#">menu1</a></li>
+        <li><a href="#">menu2</a></li>
+        <li><a href="#">menu3</a></li>
+        <li><a href="#">menu4</a></li>
+        <li><a href="#">menu5</a></li>
+    </ul>
+    <div>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore dolorum officiis quas optio, modi vitae blanditiis quos aliquam praesentium tempora commodi debitis impedit non velit explicabo perferendis fugit, aliquid dolor!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore dolorum officiis quas optio, modi vitae blanditiis quos aliquam praesentium tempora commodi debitis impedit non velit explicabo perferendis fugit, aliquid dolor!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore dolorum officiis quas optio, modi vitae blanditiis quos aliquam praesentium tempora commodi debitis impedit non velit explicabo perferendis fugit, aliquid dolor!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore dolorum officiis quas optio, modi vitae blanditiis quos aliquam praesentium tempora commodi debitis impedit non velit explicabo perferendis fugit, aliquid dolor!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore dolorum officiis quas optio, modi vitae blanditiis quos aliquam praesentium tempora commodi debitis impedit non velit explicabo perferendis fugit, aliquid dolor!</p>
+    </div>
+    <table>
+        <tr>
+            <th>번호</th>
+            <th>상품명</th>
+            <th>가격</th>
+            <th>비고</th>
+        </tr>
+        <tr>
+            <td><1/td>
+            <td>감자</td>
+            <td>500</td>
+            <td>맛있다</td>
+        </tr>
+        <tr>
+            <td><1/td>
+            <td>감자</td>
+            <td>500</td>
+            <td>맛있다</td>
+        </tr>
+        <tr>
+            <td><1/td>
+            <td>감자</td>
+            <td>500</td>
+            <td>맛있다</td>
+        </tr>
+        <tr>
+            <td><1/td>
+            <td>감자</td>
+            <td>500</td>
+            <td>맛있다</td>
+        </tr>
+        <tr>
+            <td><1/td>
+            <td>감자</td>
+            <td>500</td>
+            <td>맛있다</td>
+        </tr>
+        <tr>
+            <td><1/td>
+            <td>감자</td>
+            <td>500</td>
+            <td>맛있다</td>
+        </tr>
+        <tr>
+            <td><1/td>
+            <td>감자</td>
+            <td>500</td>
+            <td>맛있다</td>
+        </tr>
+        <tr>
+            <td><1/td>
+            <td>감자</td>
+            <td>500</td>
+            <td>맛있다</td>
+        </tr>
+        <tr>
+            <td><1/td>
+            <td>감자</td>
+            <td>500</td>
+            <td>맛있다</td>
+        </tr>
+        <tr>
+            <td><1/td>
+            <td>감자</td>
+            <td>500</td>
+            <td>맛있다</td>
+        </tr>
+    </table>
+</body>
+</html>
