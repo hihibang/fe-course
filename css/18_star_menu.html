@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StarBucks</title>
+    <meta name="description" content="star">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Nanum Gothic';
+            background-color: rgb(246, 245, 240);
+        }
+        header {
+            width: 1000px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+        }
+        .header-menu-top ul, 
+        .header-menu-bottom ul {
+            display: flex;
+            list-style: none;
+            justify-content: right;
+         }
+        .header-menu-top ul {
+            gap: 20px;
+            font-size: .9rem;
+        }
+        .header-menu-bottom ul { gap: 20px;}
+        
+        .header-menu-top a, 
+        .header-menu-bottom a {
+            text-decoration: none;
+            color: #333;
+         }
+        .header-menu-bottom a {
+            letter-spacing: 1px; /* 글자 사이의 간격 */
+            font-size: .9rem;
+         }
+        .header-menu-top li:last-child {
+            border: 1px solid #333;
+            padding: 5px;
+            border-radius: 4px;
+            background-color: white;
+        }
+        .header-menu-top li:last-child i{
+            font-size: 1.5rem;
+            font-weight: 700px;
+            background-color: white;
+        }
+        .header-menu-top li:last-child input{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-logo">
+            <img src="../images/star.png" alt="StarBucks">
+        </div>
+        <div class="header-menu">
+            <nav class="header-menu-top">
+            <ul>
+                <li><a href="#">Sign in</a></li>
+                <li><a href="#">My Starbucks</a></li>
+                <li><a href="#">Customer Service & Ideas</a></li>
+                <li><a href="#">Find a Store</a></li>
+                <li>
+                    <input type="text">
+                    <a href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+                </li>
+            </ul>
+            </nav>
+            <nav class="header-menu-bottom">
+            <ul>
+                <li><a href="#">COFFEE</a></li>
+                <li><a href="#">MENU</a></li>
+                <li><a href="#">STORE</a></li>
+                <li><a href="#">ESC</a></li>
+                <li><a href="#">STARBUCKS REWARDS</a></li>
+                <li><a href="#">CORPORATE SALES</a></li>
+                <li><a href="#">WHAT'S NEW</a></li>
+            </ul>
+            </nav>
+        </div>
+    </header>
+</body>
+</html>

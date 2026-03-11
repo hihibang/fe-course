@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Grid Layout</title>
+    <style>
+        div {
+            border: 1px blue solid;
+        }
+        .grid-wrap {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* gide를 사용할때만 사용 가능/ 1fr: 하나의 공간을 의미 */
+            /* grid-template-columns: repeat(4, 1fr); 4개의 열 */
+            
+            grid-template-rows: 100px auto;
+
+            gap: 10px;
+            align-items: baseline; /* 셀 기준으로 세로 정렬 */
+            justify-content: center; /* 셀 기준으로 가로 정렬 */
+        }
+        img[alt="img1"],
+        img[alt="img2"] {
+            width: 100px;
+            height: 100px;
+        }
+        img[alt="img3"] {
+            width: 300px;
+        }
+        .list-grid-wrap {
+            border: 1px red solid;
+            display: grid;
+            /* grid-template-columns: repeat(3, 1fr); ul태그에서는 repeat만 가능! */
+            grid-template-rows: 1fr 1fr;
+            list-style: none;
+        }
+        .item-grid {
+            grid-column: 1/4;
+        }
+    </style>
+</head>
+<body>
+    <h1>Display Grid Layout</h1>
+    <div class="grid-wrap">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>7</div>
+    </div>
+    <ul class="list-grid-wrap"> <!-- 2행 2열-->
+        <li class="item-grid">
+        <img src="../images/image2.jpg" alt="img1">
+        <img src="../images/image2.jpg" alt="img2">
+        <img src="../images/image2.jpg" alt="img2">
+        <img src="../images/image2.jpg" alt="img2">
+        <img src="../images/image2.jpg" alt="img2">
+        <img src="../images/image2.jpg" alt="img2">
+        <img src="../images/image.jpeg" alt="img3">
+        <img src="../images/image.jpeg" alt="img3"></li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overflow</title>
+    <style>
+        /* overflow: 배경(색)을 넘어 글자가 삐져 나오는 경우 */
+        /* 부모의 테두리를 넘어오는 경우 */
+        
+        /* p1: 가로 200 세로 200 배경색 */
+        /* p2: 가로 300 세로 200 배경색 */
+        /* p3: 가로 400 세로 100 배경색 */
+        p {
+            margin: 50px;
+        }
+
+        .p1 {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            overflow: auto; /* 컨텐츠가 중요하다 판단, 오버플로우되면 자동 스크롤이 생김 */ 
+        }
+        .p2 {
+            width: 500px;
+            height: 500px;
+            background-color: blue;
+            overflow: scroll;
+        }
+        .p3 {
+            width: 400px;
+            height: 100px;
+            background-color: green;
+            overflow: hidden; /* 부모를 넘어서는 놈은 안보이게 만듬 */
+        }
+        img {
+            width: 600px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Overflow</h1>
+    <p class="p1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam quo cupiditate sunt quaerat reprehenderit fugiat aspernatur tempore voluptatem accusantium veniam corrupti, similique officiis nihil hic molestiae aut omnis quisquam vitae.
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod dicta est minima deleniti alias ipsum aliquid in necessitatibus quam rerum, non cum ducimus quas mollitia saepe. Laborum, quis assumenda. Perspiciatis!
+    </p>
+    <div class="p2">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam quo cupiditate sunt quaerat reprehenderit fugiat aspernatur tempore voluptatem accusantium veniam corrupti, similique officiis nihil hic molestiae aut omnis quisquam vitae.</p>
+    <img src="../images/image2.jpg"> <!--이미지가 오버플로우 되버림, div보다 이미지 크기가 커서-->
+    </div>
+    <p class="p3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam quo cupiditate sunt quaerat reprehenderit fugiat aspernatur tempore voluptatem accusantium veniam corrupti, similique officiis nihil hic molestiae aut omnis quisquam vitae.
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa animi est sit exercitationem recusandae obcaecati repellat, vitae nostrum ut mollitia quaerat accusantium iste quod nulla odit veniam corporis eveniet praesentium.
+    </p>
+</body>
+</html>

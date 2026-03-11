@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display</title>
+    <meta name="description" content="Display">
+    <style>
+        /* Display 프로퍼티: block, inline, inline-block level 전환 */
+        div {
+        /* Block은 with, height 적용 🅾️ */
+            display: inline;
+            background-color: aquamarine;
+        }
+        span, button, input {
+            /* Block은 with, height 적용 ❌ */
+            /* 단 form 관련 태그는 일부 적용 🅾️*/
+            display: block;
+            background-color: chocolate;
+            width: 400px;
+            height: 200px;
+        }
+        img {
+        /* Block은 with, height 적용 🅾️ */
+            display: block;
+            width: 400px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Display Style</h1>
+    <hr>
+    <div>Block-Level</div>
+    <span>Inline-Level</span>
+    <button>Login</button>
+    <input type="text" value="hong">
+    <img src="../images/image2.jpg" alt="K-one">
+</body>
+</html>
