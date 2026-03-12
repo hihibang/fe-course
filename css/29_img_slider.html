@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider</title>
+    <style>
+    .slider-wrapper {
+    position: relative;
+    width: 1000px;
+    height: 400px;
+    margin: auto;
+    border: 1px solid #ccc;
+    text-align: center;
+    }    
+    .slider-wrapper img {
+        width: 800px;
+        height: 400px;
+    }
+    button {
+        position: absolute;
+        top: 50%;
+        padding: 10px 20px;
+        background-color: black;
+        color: white;
+        border: none;
+        font-size: 2rem;
+    }
+    .btn-prev {
+        left: 20px;
+    }
+    .btn-next {
+        right: 20px;
+    }
+    button:hover { /* 마우스로 눌렀을 때 */
+        color: aquamarine;
+        background-color: white;
+    }
+ </style>
+</head>
+<body>
+    <h1>Image Slider</h1>
+    <div class="slider-wrapper">
+        <img src="../images/image2.jpg" alt="k-one">
+        <button class="btn-prev">Prev</button>
+        <button class="btn-next">Next</button>
+    </div>
+</body>
+</html>

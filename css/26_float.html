@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Float Style</title>
+    <style>
+        /* .box-grop {
+            float: left;
+        } */
+        .box-grop div {
+            width: 100px;
+            height: 100px;
+            display: inline-block;
+        }
+        .d1 {
+            background-color: aquamarine;
+            float: left;
+        }
+        .d2 {
+            background-color: rebeccapurple;
+            float: left;
+        }
+        .d3 {
+            background-color: violet;
+            float: left;
+        }
+        .box-grop p {
+            clear: left;
+        }
+        .img-grop {
+            width: 500px;
+            height: 300px;
+            border: 1px black solid;
+        }
+        .img-grop img {
+            width: 100px;
+            height: 100px;
+            float: left;
+            padding: 20px;
+        }
+        .no-ploat {
+            clear: both; /* float을 어느쪽이든 상속받고 싶지 않다 */
+        }
+    </style>
+</head>
+<body>
+    <h1>Float Style Block-Level의 엘리먼트를 한줄로 배치</h1>
+    <div class="box-grop">
+        <div class="d1"></div>
+        <div class="d2"></div>
+        <div class="d3"></div>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            Quos veritatis provident beatae quae doloribus. 
+            Culpa perspiciatis optio eaque voluptate fuga labore saepe. Ipsum, 
+            eveniet asperiores porro impedit earum qui recusandae!</p>
+        </div>
+        <div class="img-grop">
+            <img src="../images/image2.jpg" alt="k-one">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                Quos veritatis provident beatae quae doloribus. 
+                Culpa perspiciatis optio eaque voluptate fuga labore saepe. Ipsum, 
+                eveniet asperiores porro impedit earum qui recusandae!</p>
+            <p class="no-ploat">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim nobis eligendi asperiores voluptas, recusandae itaque repellat sed ducimus! Maxime officiis magni in blanditiis, obcaecati iste error sapiente optio harum non.</p>
+        </div>
+</body>
+</html>

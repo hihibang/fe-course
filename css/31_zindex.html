@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zindex</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            color: #fff;
+        }
+        .red {
+            background-color: red;
+            position: relative;
+            top: 60px;
+            left: 50px;
+            z-index: 100; /* 가장 큰 z-index를 가장 앞으로 보냄 */
+        }
+        .blue {
+            background-color: blue;
+            position: relative;
+            top: 40px;
+            left: 20px;
+        }
+        .green {
+            background-color: green;
+            position: relative;
+            top: 10px;
+            left: 60px;
+        }
+        </style>
+</head>
+<body>
+    <h1>Zindex Style</h1>
+    <div class="red">child #1</div>
+    <div class="blue">child #2</div>
+    <div class="green">child #3</div>
+</html>

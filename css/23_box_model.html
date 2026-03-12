@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box Model</title>
+    <style>
+        div {
+            border: orange 1px solid;
+            /* padding: 10px; */
+        }
+        span {
+            /* display: block; */
+            border: green 1px solid;
+            padding: 10px;
+            background: greenyellow;
+        }
+        .d1, .d2 {
+            margin: 20px; /* 상하좌우 20 여백 들어감 */
+        }
+        .d2 {
+            overflow: hidden;
+        }
+        .d2 span{
+            margin: 20px; /* Inline은 마진이 안 들어먹음 */
+        }
+
+        .padding {
+            /* 보더 안쪽 padding: T(top) R(right) B(botton) L(left) */
+            /* padding: 10px 30px 20px 40px; */
+            padding: 40px; /* TB RL */
+        }
+        .margin {
+            /* 보더 바깥쪽 margin: T(top) R(right) B(botton) L(left) */
+            margin: 40px;
+        }
+        p, h3 {
+            border: blue 1px solid;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Box Model: padding, border, margin</h1>
+    <div class="d1">Box Model - content</div>
+    <div class="d2">
+    <span>Box Model - content(span)</span>
+    </div>
+    <div class="padding">
+        <h3>Padding</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur labore, vel, voluptas obcaecati a quos est aliquam inventore culpa quidem corporis, neque quia nihil omnis cupiditate amet tenetur! Facilis, ullam.</p>
+    </div>
+    <div class="margin">
+        <h3>Margin</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur labore, vel, voluptas obcaecati a quos est aliquam inventore culpa quidem corporis, neque quia nihil omnis cupiditate amet tenetur! Facilis, ullam.</p>
+    </div>
+</body>
+</html>

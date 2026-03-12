@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box Sizing</title>
+    <style>
+        /* div {
+            width: 300px;
+            height: 200px;
+            margin: 20px;
+            background-color: aquamarine;
+        } */
+        .content-box {
+            box-sizing: content-box; /* box-sizing defalt */ 
+            border: solid rebeccapurple 10px;
+            padding: 0 10px;
+            margin: 20px;
+        }
+        .border-box {
+            box-sizing: border-box;
+            border: solid rebeccapurple 10px;
+            padding: 0 10px;
+            margin: 20px;
+        }
+        .d1 {
+            box-sizing: border-box;
+            width: 800px;
+            height: 200px;
+            margin-top: 0;
+            background-color: burlywood;
+            display: flex;
+            border: 1px solid yellow;
+        }
+        p {
+            box-sizing: border-box;
+            width: 400px;
+            height: 200px;
+            background-color: tomato;
+            border: 10px blue solid; /* overflow되어 420px */
+        }
+        .d0 {
+            width: 400px;
+            height: 300px;
+            border:  #ccc solid 1px;
+            /* padding: 20px; */
+        }
+        .d0 p {
+            border: 0;
+            border-right: 10px solid red;
+            background-color: #fff;
+            padding: 30px;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Box-Siziing</h1>
+    <div class="content-box">
+        <ul>
+            <li>Content Box</li>
+            <li>width=300</li>
+            <li>padding= 20</li>
+            <li>border=10</li>
+            <li>total=360</li>
+        </ul>
+        </div>
+
+    <div class="border-box">
+        <ul>
+            <li>Border Box</li>
+            <li>width=300</li>
+            <li>padding= 20</li>
+            <li>border=10</li>
+            <li>total=360</li>
+        </ul>
+    </div>
+    <!--이렇기 때문에 border 박스로 지정해서 사용해야 원하는 크기로 사용 가능-->
+    
+    <div class="d0">
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+        Recusandae laboriosam temporibus dolor quae. Quidem architecto 
+        eum culpa nihil fugiat molestias laborum fugit, exercitationem omnis nobis. 
+        Unde, dolor vitae? Quaerat, incidunt?</p>
+    </div>
+    <div class="d1">
+        <p class="p1">lorem</p>
+        <p class="p2">lorem</p>
+    </div>
+</body>
+</html>
