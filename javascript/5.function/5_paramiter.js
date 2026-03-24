@@ -16,3 +16,22 @@ function add(... args) {
     return sum;
 }
 
+console.log(add2('홍길동',20, 1, 2, 3, 4, 5));
+let obj = add2('홍길동',20, 1, 2, 3, 4, 5);
+console.log(obj.name);
+console.log(obj.age);
+console.log(obj.score);
+
+function add2(name, age, ... args) {
+    // let sum = 0;
+    // for(i=0; i<args.length; i++) {
+    //     sum += args[i];
+    // }
+    let sum = args.reduce((acc, cur) => acc+cur);
+    return {
+        name: name,
+        age: age,
+        score: sum
+    }
+}
+
