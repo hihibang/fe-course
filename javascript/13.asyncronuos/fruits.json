@@ -1,0 +1,35 @@
+{
+    "title":"Fruits List",
+    "List": [
+    {
+        "name":"apple",
+        "color":"red",
+        "emoji":"🍎"
+    },
+    {
+        "name":"orange",
+        "color":"orange",
+        "emoji":"🍊"
+    },
+    {
+        "name":"lemon",
+        "color":"yellow",
+        "emoji":"🍋"
+    },
+    {
+        "name":"apple",
+        "color":"red",
+        "emoji":"🍎"
+    },
+    {
+        "name":"orange",
+        "color":"orange",
+        "emoji":"🍊"
+    },
+    {
+        "name":"lemon",
+        "color":"yellow",
+        "emoji":"🍋"
+    }
+    ]
+}

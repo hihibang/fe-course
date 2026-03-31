@@ -1,0 +1,10 @@
+{
+    "title": "🙇‍♀️ Good Company 🙇‍♂️",
+    "list": [
+        {"name":"홍길동", "age":30, "department":"HR"},
+        {"name":"스미스", "age":22, "department":"HR"},
+        {"name":"김유신", "age":35, "department":"경영"},
+        {"name":"제임스", "age":23, "department":"HR"},
+        {"name":"홍길순", "age":32, "department":"기획"}
+    ]
+}
