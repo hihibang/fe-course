@@ -34,7 +34,7 @@ const show = async () => {
                     </tr>`
                 ).join("")
             }
-        </table?
+        </table>
     `
     document.querySelector('#content').innerHTML = output
 }

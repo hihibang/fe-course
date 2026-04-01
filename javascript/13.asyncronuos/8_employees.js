@@ -3,16 +3,16 @@ window.addEventListener('DOMContentLoaded', ()=>{
     show()
 })
 
-//getJson 함수 생성
+//1. JSON 데이터 가져오기
 const data_url = 'http://127.0.0.1:5500/javascript/13.asyncronuos/employees.json';
 const getJson = async () => {
     let response = await fetch(data_url)
     return response.json()
 }
 
-//show 함수 생성
+//HTML 파일 출력
 const show = async () => {
-    let jsonData = await getJson() //panding: 나는 프로미스 타입이고 지금 Web API에서 너를 기다리고 있는 중이야
+    let jsonData = await getJson() // getJson()이 비동기 함수이기 때문에 아래에서 호출되기 위해서는 먼저 진행되어야 함. 그래서 await-async 키워드 사용
     console.log(jsonData);
 
     let output = `
@@ -34,7 +34,7 @@ const show = async () => {
                     </tr>`
                 ).join("")
             }
-        </table?
+        </table>
     `
     document.querySelector('#content').innerHTML = output
 }
