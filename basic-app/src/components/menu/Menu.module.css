@@ -1,0 +1,14 @@
+.menu1 {
+    border: 1px red solid;
+    padding: 5px 10px;
+    text-decoration: none;
+    background-color: aqua;
+    color: #000;
+}
+.menu2 {
+    border: 1px gray solid;
+    padding: 5px 10px;
+    text-decoration: none;
+    background-color: pink;
+    color: #000;
+}
