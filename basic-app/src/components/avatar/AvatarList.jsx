@@ -1,12 +1,14 @@
-import Avatar from "./Avatar.jsx"
-import style from "./Avatar.module.css"
+import Avatar from "./Avatar.jsx";
+import style from './Avatar.module.css';
 
-export default function AvatarImageList( { imgAlist } ) {
-    return(
+export default function AvatarList({ list }) {
+    return (
         <div className={style.avatar_list}>
-            {
-                imgAlist.map(item=> <Avatar img={item.img} name={item.name} />)
-            }
+            { list.map((item, idx) => 
+                <Avatar img={item.img} 
+                        name={item.name} 
+                        key={idx}
+                    /> ) }
         </div>
     )
 }

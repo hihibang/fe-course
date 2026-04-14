@@ -1,18 +1,18 @@
 import Child from "./Child.jsx"
 
-function Propscomp() {
-    return (
-        <h1>Propscomponent!!!!!</h1>
+function PropsComp() {
+    return(
+        <h1>PropsComp!!</h1>
     )
 }
 
-export default function Parent() {
+export default function Parent(props) {
     return (
-        <> 
-        {/* 최상위 태그로 묶어줘야 함(div 혹은 빈 태그)   */}
-        <Child>
-            <Propscomp />
-        </Child>
+        <>
+            <h1>Parent:: {props.name} </h1>
+            <Child>         
+                <PropsComp />
+            </Child>         
         </>
     )
 }

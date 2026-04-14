@@ -1,31 +1,42 @@
 import AvatarImage from "./components/avatar/AvatarImage.jsx"
 import AvatarImageList from "./components/avatar/AvatarImageList.jsx"
-import AvatarList from "./components/avatar/AvatarList.jsx"
 import Avatar from "./components/avatar/Avatar.jsx"
+import AvatarList from "./components/avatar/AvatarList.jsx"
+import style from './components/avatar/Avatar.module.css';
+import MenuList from './components/menu/MenuList.jsx';
+import mstyle from './components/menu/Menu.module.css';
 import people1 from './assets/people1.webp';
 import people2 from './assets/people2.webp';
 import people3 from './assets/people3.webp';
-import Menu from "./components/menu/Menu.jsx";
-import mstyle from './components/avatar/Avatar.module.css'
-import style from './components/menu/Menu.module.css'
 
 export default function App() {
   const list = [
-    {img: people1},
-    {img: people2},
-    {img: people3}
+    {img: people1, style:style.avatar_img},
+    {img: people2, style:style.avatar_img},
+    {img: people3, style:style.avatar_img_circle},
+    {img: people3, style:style.avatar_img}
   ]
   const alist = [
-    {img: people1, name:'smith'},
-    {img: people2, name:'smith'},
-    {img: people3, name:'smith'}
+    {img: people1, name: "Smith" },
+    {img: people2, name: "James"},
+    {img: people3, name: "Anne"},
+    {img: people3, name: "Anne"}
   ]
+  const mlist = [
+    {title: "멤버십", href: "#", style: mstyle.menu1},
+    {title: "고객센터", href: "#", style: mstyle.menu1},
+    {title: "단체관람/대관문의", href: "#", style: mstyle.menu1},
+    {title: "로그인", href: "#", style: mstyle.menu1},
+  ]
+
   return ( 
     <>
-      <AvatarImage img={people3} style={mstyle.avatar_img_circle}/>
-      <AvatarImageList imgList={list}/>
-      <AvatarList imgAlist={alist}/> 
+      <AvatarImage img={people1} style={style.avatar_img}/>
+      <Avatar name="Anne" img={people3} />
+      <AvatarImageList imgList={list} />
+      <AvatarList list={alist} />
     </>
   )
 }
+
 
