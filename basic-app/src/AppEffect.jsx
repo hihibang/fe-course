@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import EffectCounter from './components/effects/EffectCounter.jsx';
 import EffectFetch from './components/effects/EffectFetch.jsx';
+import EffectFetch2 from './components/effects/EffectFetch2.jsx';
 
 export default function App() {
     const [show, setShow] = useState(true);
@@ -12,6 +13,7 @@ export default function App() {
             </button>
             <hr/> */}
             <EffectFetch />
+            <EffectFetch2 />
         </>
     )
 }

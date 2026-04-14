@@ -1,0 +1,65 @@
+{
+    "roomList": [
+        {
+            "pk": "air_001",
+            "img": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTQ3MTY3NjExNzY1ODY5NTI3NA==/original/c2911951-dcc5-4c3e-9079-27f60353df13.jpeg?im_w=1200",
+            "roomTitle": "부산의 집",
+            "roomDate": "5월 8일 ~ 10일",
+            "roomPrice":"572,000",
+            "roomRating":"5.0",
+            "isGuest": true,
+            "isLike": true
+        },
+        {
+            "pk": "air_002",
+            "img": "https://a0.muscache.com/im/pictures/hosting/Hosting-633560901303941078/original/d6af360b-c160-416c-b225-6461db79a799.png?im_w=1200",
+            "roomTitle": "서울의 집",
+            "roomDate": "5월 8일 ~ 10일",
+            "roomPrice":"250,000",
+            "roomRating":"4.0",
+            "isGuest": false,
+            "isLike": true
+        },
+        {
+            "pk": "air_003",
+            "img": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NjYwNjMxNTg5Mzk1ODMwNTUx/original/3926d46c-dba3-48de-b03a-52c609d5a3ff.jpeg?im_w=1200",
+            "roomTitle": "속초의 집",
+            "roomDate": "10월 8일 ~ 10일",
+            "roomPrice":"1,572,000",
+            "roomRating":"5.0",
+            "isGuest": true,
+            "isLike": false
+        },
+        {
+            "pk": "air_004",
+            "img": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTQ3MTY3NjExNzY1ODY5NTI3NA==/original/c2911951-dcc5-4c3e-9079-27f60353df13.jpeg?im_w=1200",
+            "roomTitle": "부산의 집",
+            "roomDate": "5월 8일 ~ 10일",
+            "roomPrice":"572,000",
+            "roomRating":"5.0",
+            "isGuest": true,
+            "isLike": true
+        },
+        {
+            "pk": "air_005",
+            "img": "https://a0.muscache.com/im/pictures/hosting/Hosting-633560901303941078/original/d6af360b-c160-416c-b225-6461db79a799.png?im_w=1200",
+            "roomTitle": "서울의 집",
+            "roomDate": "5월 8일 ~ 10일",
+            "roomPrice":"250,000",
+            "roomRating":"4.0",
+            "isGuest": false,
+            "isLike": true
+        },
+        {
+            "pk": "air_006",
+            "img": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NjYwNjMxNTg5Mzk1ODMwNTUx/original/3926d46c-dba3-48de-b03a-52c609d5a3ff.jpeg?im_w=1200",
+            "roomTitle": "속초의 집",
+            "roomDate": "10월 8일 ~ 10일",
+            "roomPrice":"1,572,000",
+            "roomRating":"5.0",
+            "isGuest": true,
+            "isLike": false
+        }
+    ]
+}
+
