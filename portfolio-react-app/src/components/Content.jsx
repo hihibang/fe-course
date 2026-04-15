@@ -1,7 +1,14 @@
-export default function Content() {
-    return (
+import Home from "./content/Home.jsx"
+import About from "./content/About.jsx"
+import Skills from "./content/Skills.jsx"
+
+export default function Content({ data }) {
+    // console.log('Content :: data :: ', data?.home);    
+    return(
         <>
-            <h1>Content!!!!!!</h1>
+            <Home data={data?.home}/>
+            <About data={data?.about}/> 
+            <Skills data={data?.skills}/>
         </>
     )
 }
