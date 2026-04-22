@@ -14,12 +14,12 @@ export default function App() {
     }
     loadData();
   }, []);
-
+  
   return (
     <>
       <Header data={data?.header} />
       <Content data={data?.content}/>
-      <Footer data={data?.content}/>
+      <Footer data={data?.footer} />
     </>
   )
 }

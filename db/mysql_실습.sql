@@ -716,13 +716,24 @@ Select left(hire_date, 4) as 입사년도,
 	from employee
     group by left(hire_date, 4) with rollup;
     
-select *
-	from employee,
-		(select emp_id, left(hire_date, 4) year
-        from employee) T1
+select 	if(grouping(year), '총합계', ifnull(year, '-')) as hire_date,
+		count(*) as '사원수',
+        format(sum(salary), 0) as '총급여',
+        format(truncate(avg(salary), 0), 0) as '평균급여',
+        format(max(salary), 0) as '최대급여',
+        format(min(salary), 0) as '최소급여'
+from employee,
+	 (select emp_id, left(hire_date, 4) year
+		from employee) T1
 where employee.emp_id = T1.emp_id and salary is not null
 group by year with rollup;
         
+select *
+	from employee
+    order by salary desc
+    limit 3;
+    
+
     
     
     

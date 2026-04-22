@@ -63,85 +63,86 @@
             "etc":  [ "Git", "Scrum Master", "SVN"]
         },
         "work": {
-            "categories": [
-        {"category": "All", "count":"8"},
-        {"category": "Front-end", "count":"4"},
-        {"category": "Back-end", "count":"2"},
-        {"category": "Mobile", "count":"2"}
-        ],
+            "categories" : [
+                {"category": "All", "count": "8"},
+                {"category": "Front-end", "count": "4"},
+                {"category": "Back-end", "count": "2"},
+                {"category": "Mobile", "count": "2"}
+            ],
             "projects": [
-        {
-            "img": "images/projects/project1.webp",
-            "alt":"project-img",
-            "title":"Project#1",
-            "description":"Clone Coding with HTML, CS"
+                {
+                    "img": "images/projects/project1.webp",
+                    "alt": "project-img",
+                    "title": "Project#1",
+                    "description": "Clone Coding with HTML, CSS"
+                },
+                {
+                    "img": "images/projects/project2.webp",
+                    "alt": "project-img",
+                    "title": "Project#2",
+                    "description": "Clone Coding with HTML, CSS"
+                },
+                {
+                    "img": "images/projects/project3.webp",
+                    "alt": "project-img",
+                    "title": "Project#3",
+                    "description": "Clone Coding with HTML, CSS"
+                },
+                {
+                    "img": "images/projects/project4.webp",
+                    "alt": "project-img",
+                    "title": "Project#4",
+                    "description": "Clone Coding with HTML, CSS"
+                },
+                {
+                    "img": "images/projects/project5.webp",
+                    "alt": "project-img",
+                    "title": "Project#5",
+                    "description": "Clone Coding with HTML, CSS"
+                },
+                {
+                    "img": "images/projects/project6.webp",
+                    "alt": "project-img",
+                    "title": "Project#6",
+                    "description": "Clone Coding with HTML, CSS"
+                },
+                {
+                    "img": "images/projects/project7.webp",
+                    "alt": "project-img",
+                    "title": "Project#7",
+                    "description": "Clone Coding with HTML, CSS"
+                },
+                {
+                    "img": "images/projects/project8.webp",
+                    "alt": "project-img",
+                    "title": "Project#8",
+                    "description": "Clone Coding with HTML, CSS"
+                }
+            ]
         },
-        {
-            "img": "images/projects/project1.webp",
-            "alt":"project-img",
-            "title":"Project#2",
-            "description":"Clone Coding with HTML, CS"
-        },
-        {
-            "img": "images/projects/project1.webp",
-            "alt":"project-img",
-            "title":"Project#3",
-            "description":"Clone Coding with HTML, CS"
-        },
-        {
-            "img": "images/projects/project1.webp",
-            "alt":"project-img",
-            "title":"Project#4",
-            "description":"Clone Coding with HTML, CS"
-        },
-        {
-            "img": "images/projects/project1.webp",
-            "alt":"project-img",
-            "title":"Project#5",
-            "description":"Clone Coding with HTML, CS"
-        },
-        {
-            "img": "images/projects/project1.webp",
-            "alt":"project-img",
-            "title":"Project#6",
-            "description":"Clone Coding with HTML, CS"
-        },
-        {
-            "img": "images/projects/project1.webp",
-            "alt":"project-img",
-            "title":"Project#7",
-            "description":"Clone Coding with HTML, CS"
-        },
-        {
-            "img": "images/projects/project1.webp",
-            "alt":"project-img",
-            "title":"Project#8",
-            "description":"Clone Coding with HTML, CS"
-        }]
-        },
-        "testmonials": [
-        {
-            "img":"images/testimonials/people1.webp",
-            "alt":"people1",
-            "description":"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi reprehenderit quaerat ab, impedit aliquam corrupti nesciunt tempora harum earum labore corporis, facere assumenda! Qui fugiat pariatur, voluptas repudiandae iure nulla.",
-            "name":"Lee",
-            "company":"Google"
-        },
-        {
-            "img":"images/testimonials/people2.webp",
-            "alt":"people2",
-            "description":"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi reprehenderit quaerat ab, impedit aliquam corrupti nesciunt tempora harum earum labore corporis, facere assumenda! Qui fugiat pariatur, voluptas repudiandae iure nulla.",
-            "name":"Smith Park",
-            "company":"Google"
-        },
-        {
-            "img":"images/testimonials/people3.webp",
-            "alt":"people3",
-            "description":"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi reprehenderit quaerat ab, impedit aliquam corrupti nesciunt tempora harum earum labore corporis, facere assumenda! Qui fugiat pariatur, voluptas repudiandae iure nulla.",
-            "name":"kim",
-            "company":"Samsung"
-        }
-    ]
+        "testimonials": [
+                {
+                    "img": "images/testimonials/people1.webp",
+                    "alt": "people1",
+                    "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit.Lorem ipsum, dolor sit amet consectetur adipisicing elit",
+                    "name": "James",
+                    "company": "Samsung"
+                },
+                {
+                    "img": "images/testimonials/people2.webp",
+                    "alt": "people2",
+                    "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit.Lorem ipsum, dolor sit amet consectetur adipisicing elit",
+                    "name": "Smith",
+                    "company": "Google"
+                },
+                {
+                    "img": "images/testimonials/people3.webp",
+                    "alt": "people3",
+                    "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit.Lorem ipsum, dolor sit amet consectetur adipisicing elit",
+                    "name": "Anne",
+                    "company": "Samsung"
+                }
+            ]
     },
     "footer":{
         "description": "Junior Software Engineer Judy's Portfolio - All right reserved",

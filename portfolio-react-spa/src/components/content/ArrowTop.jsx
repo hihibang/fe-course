@@ -6,7 +6,7 @@ export default function ArrowTop() {
     return (
         <aside>
             <a href="#" className="arrow-up">
-                <FontAwesomeIcon icon={faArrowUp}/>
+                <FontAwesomeIcon icon={faArrowUp} />
             </a>
         </aside>
     );
