@@ -733,18 +733,377 @@ select *
     order by salary desc
     limit 3;
     
+select * from employee where emp_name = '홍길동';
+select * from department where dept_id = 'sys';
 
+/*******************************************************
+	조인(JOIN) : 두 개이상의 테이블을 연동하여 하나의 데이셋 구성
+    ERD(Entity Relationship Diagram): 데이터베이스 설계도(구조도)
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    ** ANSI SQL : 데이터베이스 시스템들의 표준 SQL **
+    ** 조인(JOIN) 종류 **
+    (1) CROSS JOIN(CATEISIAN:카테이션) - 합집합
+        : 테이블의 데이터 전체를 조인 
+        예) 테이블1(10개) * 테이블2(10개) = 100개
+	(2) INNER JOIN(EQUI) - 교집합
+		: 두 개이상의 테이블들이 조인연결고리를 통해 조인 실행
+	(3) OUTER JOIN - INNER JOIN + 조인에서 제외한 ROW 포함
+		LEFT OUTER JOIN - 왼쪽의 테이블의 ROW 포함
+        RIGHT OUTER JOIN - 오른쪽 테이블의 ROW 포함
+	(4) SELF JOIN - 한(자신) 테이블을 두 개(자신, 사본)의 테이블처럼 조인        
+********************************************************/ 
+-- [CROSS JOIN]
+-- 형식1> SELECT [컬럼리스트] 
+-- 		FROM  [테이블1] CORSS JOIN [테이블2]
+-- 		WHERE [조건절]
+-- 형식2> SELECT [컬럼리스트] 
+-- 		FROM  [테이블1], [테이블2]
+-- 		WHERE [조건절]
 
-   
+-- employee, department cross join
+select count(*) from employee;  -- 20
+select count(*) from department; -- 7
+select count(*) from unit; 		 -- 3
 
+select count(*)  from employee 
+					cross join department
+                    cross join unit;  -- 420
+select count(*) from employee, department, unit; -- 420
+
+-- 사원, 휴가, 부서 테이블을 cross join
+select count(*) from employee;  	-- 20
+select count(*) from vacation; 		-- 102
+select count(*) from department;	-- 7
+
+select count(*) from employee
+					cross join vacation
+                    cross join department; -- 14280
+select count(*) from employee, vacation, department;  -- 14280        
+
+-- [INNER JOIN(EQUI JOIN)] 
+-- 형식1> SELECT [컬럼리스트]
+-- 		 FROM [테이블1] INNER JOIN [테이블2]   
+-- 					   ON [테이블1.조인컬럼] = [테이블2.조인컬럼]  
+-- 형식2> SELECT [컬럼리스트]
+-- 		 FROM [테이블1],[테이블2]   
+-- 		 WHERE [테이블1.조인컬럼] = [테이블2.조인컬럼]  
+
+select count(*) from employee inner join department
+					on employee.dept_id = department.dept_id;  -- 20
+
+select count(*)
+	from employee, department
+    where employee.dept_id = department.dept_id; -- 20
+    
+-- 사원테이블, 부서테이블, 본부테이블 inner join
+select *
+	from employee e inner join department d
+					on e.dept_id = d.dept_id
+                    inner join unit u
+                    on d.unit_id = u.unit_id;
+
+select * 
+	from employee e, department d, unit u
+    where e.dept_id = d.dept_id
+		and d.unit_id = u.unit_id;
+                    
+-- 모든 사원들의 사원번호, 사원명, 부서아이디, 부서명, 입사일, 급여를 조회
+select e.emp_id, emp_name, d.dept_id, d.dept_name, hire_date, salary
+	from employee e, department d
+    where e.dept_id = d.dept_id;
+                    
+-- '영업'에 속한 사원들의 사원명, 입사일, 퇴사일, 급여, 부서아이디, 부서명 조회
+-- 재직중인 사원은 현재날짜로 출력						
+select  e.emp_name,
+		e.hire_date,
+        ifnull(e.retire_date, curdate()) as retire_date,
+        e.salary,
+        d.dept_id,
+        d.dept_name
+	from employee e, department d
+    where e.dept_id = d.dept_id
+		and d.dept_name = '영업';
+
+-- '2015'년도에 입사자들의 사번, 사원명, 입사일, 부서명, 본부아이디, 본부명을 조회
+select  e.emp_id,
+		e.emp_name,
+        e.hire_date,
+        d.dept_name,
+        u.unit_id,
+        u.unit_name
+	from employee e, department d, unit u
+    where e.dept_id = d.dept_id
+		and d.unit_id = u.unit_id
+        and left(e.hire_date, 4) = '2015';
+
+-- 인사과에 속한 사원중에 휴가를 사용한 사원의 내역 조회
+select *
+		from employee e, vacation v, department d
+        where e.dept_id = d.dept_id
+        and e.emp_id = v.emp_id
+        and dept_name = '인사';
+        
+select *
+	from employee e inner join department d on e.dept_id = d.dept_id    
+				    inner join vacation v on e.emp_id = v.emp_id
+	where dept_name = '인사';
+    
+-- 사원별 휴가사용 일수를 조회, 사원 아이디, 사원명, 휴가일수
+select e.emp_id,
+	   e.emp_name,
+       count(*) as 휴가일수
+	from employee e, vacation v
+    where e.emp_id = v.emp_id
+    group by e.emp_id
+    order by 휴가일수 desc
+    limit 5;
+
+select e.emp_id,
+	   e.emp_name,
+       count(*) as 휴가일수
+	from employee e inner join vacation v on e.emp_id = v.emp_id
+    group by e.emp_id
+    order by 휴가일수 desc
+    limit 5;
+    
+select e.emp_name,
+	   e.phone,
+       d.dept_name,
+       v.reason,
+       u.unit_name
+	from employee e, vacation v, department d, unit u
+    where e.dept_id = d.dept_id
+        and e.emp_id = v.emp_id
+        and u.unit_id = d.unit_id
+        and v.reason = '두통'
+        and dept_name = '영업';
+        
+select e.emp_name,
+	   e.phone,
+       d.dept_name,
+       v.reason,
+       u.unit_name
+	from unit u inner join department d on u.unit_id = d.unit_id
+				inner join employee e on d.dept_id = e.dept_id
+                inner join vacation v on e.emp_id = v.emp_id
+    where v.reason = '두통'
+        and dept_name = '영업';
+        
+select e.emp_id,
+	   e.emp_name,
+       d.dept_name,
+       e.hire_date,
+       u.unit_name
+	from employee e, department d, unit u
+	where e.dept_id = d.dept_id
+    and d.unit_id = u.unit_id
+    and retire_date is null
+    and left(hire_date, 4) between '2014' and '2016';
+    
+select e.emp_id,
+	   e.emp_name,
+       d.dept_name,
+       e.hire_date,
+       u.unit_name
+	from unit u inner join department d on u.unit_id = d.unit_id
+				inner join employee e on d.dept_id = e.dept_id
+	where retire_date is null
+    and left(hire_date, 4) between '2014' and '2016';
+    
+select d.dept_name as 부서명,
+	   sum(salary) as 총급여,
+       avg(salary) as 평균급여,
+       count(*) as 휴가사용일수
+	from department d, employee e, vacation v
+    where d.dept_id = e.dept_id
+    and e.emp_id = v.emp_id
+    group by dept_name;
+    
+select d.dept_name as 부서명,
+	   d.dept_id as 부서아이디,
+	   concat(format(sum(salary), 0), '$') as 총급여,
+       concat(format(avg(salary), 2), '$') as 평균급여,
+       concat(count(*), '일') as 휴가사용일수
+	from department d inner join employee e on d.dept_id = e.dept_id 
+					  inner join vacation v on e.emp_id = v.emp_id
+    group by d.dept_id;
+    
+    -- 본부별 휴가사용 일수를 조회
+select  u.unit_id,
+		u.unit_name,
+        sum(v.duration)  -- 휴가 사용 일수
+	from employee e, department d, unit u, vacation v
+    where e.dept_id = d.dept_id
+		and d.unit_id = u.unit_id
+        and e.emp_id = v.emp_id
+    group by u.unit_id;
+
+-- 본부별 > 부서별로 그룹핑 한후 부서의 휴가사용 일수를 조회
+select  u.unit_id,
+		u.unit_name,
+        d.dept_name, 
+        sum(v.duration)  -- 휴가 사용 일수
+	from employee e, department d, unit u, vacation v
+    where e.dept_id = d.dept_id
+		and d.unit_id = u.unit_id
+        and e.emp_id = v.emp_id
+    group by u.unit_id, d.dept_id;
+
+-- 본부별 > 부서별 > 사원별로 그룹핑 한후 부서의 휴가사용 일수를 조회
+select  u.unit_id,
+		u.unit_name,
+        d.dept_name, 
+        e.emp_name,
+        sum(v.duration)  -- 휴가 사용 일수
+	from employee e, department d, unit u, vacation v
+    where e.dept_id = d.dept_id
+		and d.unit_id = u.unit_id
+        and e.emp_id = v.emp_id
+    group by u.unit_id, d.dept_id, e.emp_id;    
+
+select  u.unit_id,
+		u.unit_name,
+        d.dept_name, 
+        e.emp_name,
+        sum(v.duration)  -- 휴가 사용 일수
+	from employee e inner join department d on e.dept_id = d.dept_id
+					inner join unit u 		on d.unit_id = u.unit_id
+                    inner join vacation v	on e.emp_id = v.emp_id
+    group by u.unit_id, d.dept_id, e.emp_id;    
+
+-- [OUTER JOIN] 
+-- 오라클 INNER JOIN(EQUI JOIN) 문법에 (+) 코드를 추가하여 사용
+-- 현재 오라클 문법은 MySQL에서는 사용 불가 
+-- 형식1> SELECT [컬럼리스트]
+-- 		 FROM [테이블1] LEFT/RIGHT OUTER JOIN [테이블2]   
+-- 					   ON [테이블1.조인컬럼] = [테이블2.조인컬럼]  
+
+select count(distinct dept_id) from employee;  -- 6
+select count(dept_id) from department; -- 7
+
+-- LEFT OUTER JOIN : LEFT에 부서테이블 위치
+-- 부서별 사원수 조회, 전체 부서 출력!!
+select  d.dept_id,
+		d.dept_name,
+		count(emp_id) as '사원수'
+	from department d left outer join employee e
+					  on d.dept_id = e.dept_id
+    group by d.dept_id;
+
+-- RIGHT OUTER JOIN : RIGHT에 부서테이블 위치
+-- 부서별 사원수 조회, 전체 부서 출력!!
+select  d.dept_id,
+		d.dept_name,
+		count(emp_id) as '사원수'
+	from employee e right outer join department d
+					  on d.dept_id = e.dept_id
+    group by d.dept_id;
+
+-- 모든 부서의 아이디, 부서명, 본부명을 조회
+-- 본부에 속하지 않은 부서는 '준비중'으로 출력
+select  d.dept_id,
+		d.dept_name,
+        ifnull(u.unit_name, '준비중') as unit_name
+	from department d left outer join unit u
+					  on d.unit_id = u.unit_id;
+
+select u.unit_id,
+	   u.unit_name,
+       d.dept_id,
+       d.dept_name,
+       sum(v.duration) as '휴가사용일수'
+	from employee e right outer join department d on e.dept_id = d.dept_id
+					left outer join unit u on d.unit_id = u.unit_id
+                    left outer join vacation v on e.emp_id = v.emp_id
+	group by u.unit_id, d.dept_id;
+    
+select e.emp_name,
+	   e.hire_date,
+       e.salary,
+       d.dept_name,
+       u.unit_name
+	from employee e right outer join department d on e.dept_id = d.dept_id
+				    left outer join unit u on u.unit_id = d.unit_id
+    where e.retire_date is null
+    and left(hire_date, 4) between '2017' and '2018';
+    
+-- [self join] 자신의 테이블을 조인
+-- 형식: SELECT [컬럼리스트]
+-- 		FROM [테이블원본], [테이블사본]
+-- 		WHERE [테이블원본.조인칼럼] = [테이블사본.조인칼럼]
+
+select *
+	from employee e1, employee e2
+    where e1.emp_id = e2.emp_id;
+    
+/**************************************
+	서브쿼리: 메인 쿼리에 다른 쿼리를 추가하여 실행
+    -> (쿼리작성) 괄호안에 쿼리를 작성하여 메인쿼리에 추가
+    형식 > SELECT [컬럼리스트 추가 > 스칼라 서브쿼리]
+		  FROM [테이블명 추가 -> (인라인뷰)]
+          WHERE [조건절 -> (서브쿼리)]
+**************************************/
+
+-- [서브쿼리: 단일행 = '='로 비교함]
+select  emp_id,
+		emp_name,
+		hire_date,
+        dept_id,
+        salary
+	from employee
+    where dept_id=(select dept_id 
+	from department where dept_name = '정보시스템');  
+    
+select  e.emp_id,
+		e.emp_name,
+		e.hire_date,
+        d.dept_id,
+        e.salary
+	from employee e, department d
+    where e.dept_id = d.dept_id
+    and d.dept_name = '정보시스템';
+    
+-- 홍길동 사원이 속한 부서아이디, 부서명, 부서 오픈일 조회
+select dept_id
+	from employee
+    where emp_name = '홍길동';
+       
+select dept_id,
+	   dept_name,
+       start_date
+	from department
+    where dept_id = (select dept_id
+	from employee
+    where emp_name = '홍길동');
+    
+select count(*)
+	from vacation
+    where emp_id = (select emp_id
+	from employee
+    where emp_name = '홍길동');
+    
+-- [서브쿼리 : ]
+-- 제 3본부에 속한 모든 부서를 조회
+
+select *
+	from department
+    where unit_id = (select unit_id
+	from unit where unit_name = '제3본부');
+    
+select *
+	from employee
+    where salary = ( select max(salary) from employee);
+
+select *
+	from employee
+    where hire_date = ( select max(hire_date) from employee);    
+    
+select *
+	from employee
+    where retire_date = ( select min(retire_date) from employee);    
+    
+    
+    
+    
+    
     
