@@ -1665,3 +1665,280 @@ show tables;
 
 set autocommit =1;
 
+/*************************************************************
+	제약사항 : 데이터 무결성 원칙을 적용하기 위한 원칙
+	- unique : 중복을 방지하는 제약
+	- Not Null : null 값을 허용하지 않는 제약
+	- Primary : Unique + Not Null , Auto-increment 함께 사용
+	- Foreign : 타 테이블 기본키를 참조하는 제약,
+				기본키와 참조하는 칼럼은 데이터 타입이 동일해야 함.
+	- Default : 데이터 입력시 기본으로 저장되는 데이터를 정의하는 제약
+	** 제약 사항은 테이블 생성시, 테이블 수정시 정의할 수 있음
+************************************************************/
+
+select @@sql_safe_updates; -- 업데이트 모드 해제
+select @@autocommit; -- 수동으로 트랜직션 관리
+set sql_safe_updates = 0;
+set autocommit = 0;
+
+-- 제약사항 확인
+show tables;
+desc employee;
+SELECT * FROM information_schema.TABLE_CONSTRAINTS
+	where table_schema = 'hrdb2019';
+    
+    
+-- emp_const 테이블 생성, 기본키 제약(PK), 참조키 제약(FK), Not null
+create table emp_const(
+	emp_id 		char(4)		primary key,
+    emp_name 	varchar(5)	not null,
+    hire_date	date,
+    salary		int
+);
+create table emp_const2(
+	emp_id 		char(4)		,
+    emp_name 	varchar(5)	not null,
+    hire_date	date,
+    salary		int
+);
+show tables;
+desc emp_const;
+desc emp_const2;
+
+drop table emp_const2;
+-- 
+insert into emp_const(emp_id, emp_name, hire_date, salary) 
+		values('S001', '홍길동', curdate(), 8000);
+insert into emp_const(emp_id, emp_name, hire_date, salary) 
+		values('S002', '스미스', curdate(), 7500);
+        
+insert into emp_const2(emp_id, emp_name, hire_date, salary) 
+		values('S001', '홍길동', curdate(), 8000);
+insert into emp_const2(emp_id, emp_name, hire_date, salary) 
+		values('S002', '스미스', curdate(), 7500);
+
+select * from emp_const;
+select * from emp_const2; -- emp_id가 PK가 아니기 때문에 중복 입력이 가능하다
+
+create table emp_const3(
+	emp_id 		char(4)		,
+    emp_name 	varchar(5)	not null,
+    hire_date	date,
+    salary		int,
+    constraint pk_emp_const3_emp_id primary key(emp_id)
+);
+
+desc emp_const3;
+SELECT * FROM information_schema.TABLE_CONSTRAINTS
+	where table_name = 'emp_const3';
+
+
+/*************************************************************
+	제약사항 추가/수정/삭제
+    ALTER TABLE 테이블명
+		ADD CONSTRAINT 제약사항명 제약사항(컬럼)
+		MODIFY CONSTRAINT 제약사항명 제약사항(컬럼)
+		DROP 제약사항명
+    ** 제약사항은 삭제 후 재정의하는 것을 원칙으로 함!!!!
+************************************************************/
+
+-- emp_const 테이블의 제약사항 확인
+select * from information_schema.table_constraints
+	where table_name = 'emp_const3';
+desc emp_const;
+
+alter table emp_const
+	add phone char(13); 
+
+update emp_const
+	set phone = '010-1111-1234';
+    
+select * from emp_const;
+
+alter table emp_const
+	modify phone char(13) default '010-1111-1234';
+
+insert into emp_const(emp_id, emp_name, hire_date)
+	values('S003', '김상순', curdate());
+
+select * from emp_const;
+
+alter table emp_const
+	modify salary int default 1000;
+    
+insert into emp_const(emp_id, emp_name, hire_date)
+	values('S004', '강소용', curdate());
+
+select * from emp_const;
+
+
+alter table emp_const
+	modify hire_date date default '2026-01-01'; -- 함수사용 불가
+
+insert into emp_const(emp_id, emp_name)
+	values('S005', '진사진');
+
+select * from emp_const;
+
+alter table emp_const3
+	modify hire_date date default '2026-04-01';
+    
+alter table emp_const3
+	modify salary int not null;
+ 
+update emp_const3
+	set emp_id = 'S001' ;
+    
+insert into emp_const3(emp_id, emp_name, salary)
+	values('S003', '진사진', 4000);
+    
+select * from emp_const3;
+
+alter table emp_const3
+	add constraint chk_emp_const3_salary check (salary >= 3000);
+
+
+delete from emp_const2;
+
+alter table emp_const2
+	add constraint pk_emp_const2_emp_id primary key(emp_id);
+    
+alter table emp_const2
+	add dept_id char(3) not null;
+    
+    
+create table department2
+as select * from department;    
+    
+desc department;
+desc department2;
+    
+alter table department2
+	add constraint pk_department2_dept_id primary key(dept_id);
+    
+alter table emp_const2
+	rename column didl to did;
+    
+alter table emp_const2
+	add constraint fk_emp_const2_did foreign key(did)
+			references department2(dept_id);
+
+select * from information_schema.table_constraints;
+    
+insert into emp_const2(emp_id, emp_name, did)
+	values('S001', '홍길동', 'SYS');
+insert into emp_const2(emp_id, emp_name, did)
+	values('S002', '이순신', 'ACC');
+
+select * from emp_const2;
+
+-- department2 테이블의 SYS 부서를 삭제한다면.  삭제❌
+delete from emp_const2 where did = 'SYS';
+delete from department2 where dept_id = 'SYS';
+select * from department2;
+    
+-- 참조하는 부모테이블의 컬럼이 변화함에 따라 자식도 함께 적용받도록 옵션 정의
+-- ON [DELETE/UPDATE] CASCADE; 참조키 제약 정의시 마지막에 추가
+select * from information_schema.table_constraints;
+
+alter table emp_const2
+	drop constraint fk_emp_const2_did;
+    
+
+alter table emp_const2
+	add constraint fk_emp_const2_did foreign key(did)
+			references department2(dept_id)
+            on delete cascade
+            on update cascade;
+
+update department2
+	set dept_id = 'ABC'
+    where dept_id = 'ACC';
+
+delete from department2 where dept_id = 'abc';
+
+/*******************************************************************
+	행번호 : row_nomber()
+		   row_number() over() as '별칭'
+*******************************************************************/
+use hrdb2019;
+select database();
+select row_number() over(order by salary desc) as rno ,
+	   emp_id,
+       emp_name,
+       salary 
+       from employee where dept_id = 'SYS';
+
+select row_number() over(order by sum(duration) desc) as rno,
+	   e.emp_id,
+	   e.emp_name,
+	   sum(duration) as duration
+	from employee e inner join vacation v on e.emp_id = v.emp_id
+    group by v.emp_id;
+
+
+
+/*******************************************************************
+	석차 : rank()
+		   rank() over() as '별칭'
+*******************************************************************/
+
+select rank() over(order by salary desc) as rno,
+	   emp_id,
+       emp_name
+       from employee;
+       
+select rank() over(order by hire_date asc) as rno,
+	   emp_id,
+       emp_name,
+       hire_date
+       from employee;
+
+
+/*******************************************************************
+	트리거 생성 : 테이블의 PK 정의 :: '문자' + '000' + 1(auto_increment)
+*******************************************************************/
+-- trigger 생성 : 여러개의 sql문 포함
+
+show tables;
+create table member(
+	mid 	char(5)		primary key, -- 'M0001'
+    name 	varchar(5)	not null,
+    mdate	datetime
+);
+select * from information_schema.triggers;
+-- 		 where table_schema = 'hrdb2019';
+
+/************************************************
+	mid에 들어가는 'M0001' 타입의 회원아이디 트리거
+/************************************************/
+delimiter $$
+create trigger trg_member_mid
+before insert on member
+for each row
+begin
+declare max_code int;  --  'M0001'
+
+-- 현재 저장된 값 중 가장 큰 값을 가져옴
+SELECT IFNULL(MAX(CAST(right(mid, 4) AS UNSIGNED)), 0)
+INTO max_code
+FROM member; 
+
+-- 'M0001' 형식으로 아이디 생성, LPAD(값, 크기, 채워지는 문자형식) : M0001
+SET NEW.mid = concat('M', LPAD((max_code+1), 4, '0'));
+
+end $$
+delimiter 	;
+/************************************************/
+
+desc member;
+insert into member(name, mdate) values('홍길동', now());
+
+select * from member;
+
+
+
+
+
+
+
